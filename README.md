@@ -28,7 +28,7 @@ make
 ### 2. Run the Program
 Execute the compiled binary:
 ```bash
-./main
+./out
 ```
 *(Note: Replace `./main` with whatever target executable name your makefile outputs, such as `./student_record` or `./app`, if it differs).*
 
