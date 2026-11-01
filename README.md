@@ -30,7 +30,7 @@ Execute the compiled binary:
 ```bash
 ./out
 ```
-*(Note: Replace `./main` with whatever target executable name your makefile outputs, such as `./student_record` or `./app`, if it differs).*
+*(Note: Replace `./out` with whatever target executable name your makefile outputs, such as `./student_record` or `./app`, if it differs).*
 
 ### 3. Clean Build Files (Optional)
 To delete intermediate object files (`.o`) and reset your directory, run:
