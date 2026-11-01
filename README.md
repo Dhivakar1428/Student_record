@@ -40,4 +40,3 @@ make clean
 
 ## 👤 Author
 * Dhivakar
-*
