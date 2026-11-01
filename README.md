@@ -14,7 +14,7 @@ A modular C application designed to manage student records. It allows you to cre
 * **print.c**: Handles clear console output formatting for viewing records.
 * **save.c**: Commits current record structures back to long-term storage.
 
-## 🛠️ How to Compile and Run
+## How to Compile and Run
 
 This project includes a `makefile` to simplify compilation. You do not need to run `gcc` on individual files manually.
 
@@ -38,5 +38,5 @@ To delete intermediate object files (`.o`) and reset your directory, run:
 make clean
 ```
 
-## 👤 Author
+## Author
 * Dhivakar
