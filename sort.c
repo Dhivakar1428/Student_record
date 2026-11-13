@@ -1,6 +1,39 @@
 #include"header.h"
 
-int count(STD *ptr)
+void link(STD *ptr)
+{
+    ST *head = NULL, *new, *last = NULL;
+
+    if((ptr) == NULL)
+    {
+        printf("link : No data available.\n");
+        return;
+    }
+
+    while((ptr) != NULL)
+    {
+        new = (ST *)malloc(sizeof(ST));
+
+        new->roll = (ptr)->roll;
+        strcpy(new->name, (ptr)->name);
+        new->mark = (ptr)->mark;
+
+        new->prv = last;
+        new->next = NULL;
+
+        if(head == NULL)
+            head = new;
+        else
+        {
+            last->next = new;
+        }
+
+        last = new;
+        (ptr) = (ptr)->next;
+    }
+    sorting(&head);
+}
+int count(ST *ptr)
 {
 	int n=0;
 	while(ptr!=NULL)
@@ -11,67 +44,71 @@ int count(STD *ptr)
 	return n;
 }
 
-void sort_name(STD **ptr)
+void sort_name(ST **ptr)
 {
-	int No_of_std = count((*ptr)); 
-	STD temp,*i,*j;
-	
-	for(i=(*ptr);i->next!=NULL;i=i->next)
-	{
-		for(j=i->next;j!=NULL;j=j->next)
-		{
-			if(strcmp(i->name,j->name)>0)
-			{
-				STD *i_next = i->next;
-				STD *i_prv = i->prv;
-				STD *j_next = j->next;
-				STD *j_prv = j->prv;
+    ST *i, *j;
+    int roll;
+    float mark;
+    char name[20];
 
-				temp = *i;
-				*i = *j;
-				*j = temp;
+    for(i = *ptr; i != NULL && i->next != NULL; i = i->next)
+    {
+        for(j = i->next; j != NULL; j = j->next)
+        {
+            if(strcmp(i->name, j->name) > 0)
+            {
+                roll = i->roll;
+                i->roll = j->roll;
+                j->roll = roll;
 
-				i->next = i_next;
-				i->prv = i_prv;
-				j->next = j_next;
-				j->prv = j_prv;
-			}
-			
-		}
-	}
-	printf("\nStudent list sorted successfully\n");
+                strcpy(name, i->name);
+                strcpy(i->name, j->name);
+                strcpy(j->name, name);
+
+                mark = i->mark;
+                i->mark = j->mark;
+                j->mark = mark;
+            }
+        }
+    }
+
+    printf("\nStudent list sorted successfully\n");
+    print2(*ptr);
 }
 
-void sort_percentage(STD **ptr)
+void sort_percentage(ST **ptr)
 {
-	int No_of_std = count((*ptr));
-	STD temp,*i,*j;
-	for(i=(*ptr);i->next!=NULL;i=i->next)
-	{
-		for(j=i->next;j!=NULL;j=j->next)
-		{
-			if(i->mark<j->mark)
-			{
-				STD *i_next = i->next;
-                                STD *i_prv = i->prv;
-                                STD *j_next = j->next;
-                                STD *j_prv = j->prv;
+    ST *i, *j;
+    int roll;
+    float mark;
+    char name[20];
 
-                                temp = *i;
-                                *i = *j;
-                                *j = temp;
+    for(i = *ptr; i != NULL && i->next != NULL; i = i->next)
+    {
+        for(j = i->next; j != NULL; j = j->next)
+        {
+            if(i->mark < j->mark)
+            {
+                roll = i->roll;
+                i->roll = j->roll;
+                j->roll = roll;
 
-                                i->next = i_next;
-                                i->prv = i_prv;
-                                j->next = j_next;
-                                j->prv = j_prv;		
-			}
-		}
-	}
-	printf("\nStudent info sorted successfully\n");
+                strcpy(name, i->name);
+                strcpy(i->name, j->name);
+                strcpy(j->name, name);
+
+                mark = i->mark;
+                i->mark = j->mark;
+                j->mark = mark;
+            }
+        }
+    }
+
+    printf("\nStudent info sorted successfully\n");
+    print2(*ptr);
 }
 
-void sorting(STD **ptr)
+void sorting(ST **ptr)
 {
 	char op=0;
 	do
@@ -95,7 +132,7 @@ void sorting(STD **ptr)
 		{
 			printf("\n");
 			return;
-		}
+		}	
 		else 
 			printf("Choose the correct option.\n");
 		
