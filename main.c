@@ -80,7 +80,7 @@ int main()
 		}
 		else if((op=='S')||(op=='s'))
 		{
-			sorting(&hptr);
+			link(hptr);
 		}
 		else if((op=='V')||(op=='v'))
 		{
